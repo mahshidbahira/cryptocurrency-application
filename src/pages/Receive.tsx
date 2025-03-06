@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import useWallet from "../hooks/Wallet/useWallet";
+import useWalletRetrieve from "../hooks/Wallet/useWalletRetrieve";
 import QRCode from "react-qr-code";
 
 const Receive = () => {
-  const wallet = useWallet();
+  const { wallet } = useWalletRetrieve();
   const navigate = useNavigate();
 
   let qrString = "";

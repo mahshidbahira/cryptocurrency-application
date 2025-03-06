@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useWallet from "../hooks/Wallet/useWallet";
+import useWalletRetrieve from "../hooks/Wallet/useWalletRetrieve";
 import useWalletCreate from "../hooks/Wallet/useWalletCreate";
 import { generate } from "random-words";
 
@@ -8,7 +8,7 @@ const WalletCreation = () => {
   const [mnemonic, setMnemonic] = useState<string[]>([]);
 
   const navigate = useNavigate();
-  const wallet = useWallet();
+  const { wallet } = useWalletRetrieve();
   const { createWallet } = useWalletCreate();
 
   useEffect(() => {

@@ -2,10 +2,10 @@ import { useContext } from "react";
 
 import WalletContext from "../../store/WalletContext/WalletContext";
 
-const useWallet = () => {
+const useWalletRetrieve = () => {
   const { wallet } = useContext(WalletContext);
 
-  return wallet;
+  return { wallet, error: null, isPending: false };
 };
 
-export default useWallet;
+export default useWalletRetrieve;
