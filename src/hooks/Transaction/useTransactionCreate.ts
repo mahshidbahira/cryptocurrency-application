@@ -4,10 +4,10 @@ import TransactionsContext, {
 } from "../../store/TransactionsContext/TransactionsContext";
 
 const useTransactionCreate = () => {
-  const { transactions, setTransactions } = useContext(TransactionsContext);
+  const { setTransactions } = useContext(TransactionsContext);
 
   const createTransaction = (transaction: Transaction) => {
-    setTransactions([...transactions, transaction]);
+    setTransactions((prev) => [...prev, transaction]);
   };
 
   return { createTransaction, error: null, isPending: false };

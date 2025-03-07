@@ -8,7 +8,7 @@ import useAuthLogout from "../hooks/Auth/useAuthLogout";
 const Wallet = () => {
   const auth = useAuth();
   const { logout } = useAuthLogout();
-  const { transactions } = useTransactionList();
+  const { transactions, balance } = useTransactionList();
 
   const navigate = useNavigate();
 
@@ -17,11 +17,6 @@ const Wallet = () => {
       navigate("/");
     }
   }, [auth, navigate]);
-
-  const balance = transactions.reduce(
-    (sum, transaction) => sum + transaction.amount,
-    0
-  );
 
   return (
     <div className="flex items-center justify-center h-screen px-1 sm:px-6 lg:px-8">

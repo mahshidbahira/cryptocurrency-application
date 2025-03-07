@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { DateTime } from "time-wise";
 import useTransactionCreate from "../hooks/Transaction/useTransactionCreate";
 import ReusableForm from "../components/Form/Form";
+import useTransactionList from "../hooks/Transaction/useTransactionList";
 
 interface SendFormInput {
   address: string;
@@ -12,6 +13,7 @@ const Send = () => {
   const navigate = useNavigate();
 
   const { createTransaction } = useTransactionCreate();
+  const { balance } = useTransactionList();
 
   const onSubmit = (data: SendFormInput) => {
     const datetime = DateTime.now();
@@ -64,6 +66,10 @@ const Send = () => {
                   min: {
                     value: 1,
                     message: "Amount must be greater than 0",
+                  },
+                  max: {
+                    value: balance,
+                    message: `The amount cannot be more than the account balance.`,
                   },
                 },
               },
